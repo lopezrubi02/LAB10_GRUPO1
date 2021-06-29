@@ -23,9 +23,30 @@ conn.connect(function (err) {
 });
 
 /**         PREGUNTA 1      **/
+app.get("/empleados/get", function (request, response) {
+    var query = "select e.EmployeeID, e.LastName, e.FirstName, e.Title from employees e ";
+    conn.query(query, function (err, resultado) {
+        if (err) {
+            console.log(err);
+        } else {
+            response.json(resultado);
+        }
+    });
+});
 
 /**         PREGUNTA 2      **/
-
+app.get("/empleados/getManagerEmployees/:id", function (request, response) {
+    var id = request.params.title;
+    var query = "select e.EmployeeID, e.LastName, e.FirstName, e.Title from employees e where e.EmployeeID = ?";
+    var parametros = [id];
+    conn.query(query, parametros, function (err, resultado) {
+        if (err) {
+            console.log(err);
+        } else {
+            response.json(resultado);
+        }
+    });
+});
 
 
 /**         PREGUNTA 3      **/
