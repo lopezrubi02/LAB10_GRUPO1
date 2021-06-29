@@ -21,3 +21,7 @@ conn.connect(function (err) {
         console.log("Conexión exitosa a base de datos");
     }
 });
+
+app.listen(3100, function () {
+    console.log("servidor levantado exitosamente");
+});

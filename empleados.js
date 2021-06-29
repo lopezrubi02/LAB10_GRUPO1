@@ -22,13 +22,26 @@ conn.connect(function (err) {
     }
 });
 
-app.get("/listaCategorias", function (request, response) {
-    var query = "select * from categories";
-    conn.query(query, function (err, resultado) {
+/**         PREGUNTA 1      **/
+
+/**         PREGUNTA 2      **/
+
+
+
+/**         PREGUNTA 3      **/
+app.get("/empleados/getByTitle/:title", function (request, response) {
+    var title = request.params.title;
+    var query = "select * from employees e where e.Title = ?";
+    var parametros = [title];
+    conn.query(query, parametros, function (err, resultado) {
         if (err) {
             console.log(err);
         } else {
             response.json(resultado);
         }
     });
+});
+
+app.listen(3100, function () {
+    console.log("servidor levantado exitosamente");
 });
