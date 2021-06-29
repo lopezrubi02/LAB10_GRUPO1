@@ -36,7 +36,7 @@ app.get("/empleados/get", function (request, response) {
 
 /**         PREGUNTA 2      **/
 app.get("/empleados/getManagerEmployees/:id", function (request, response) {
-    var id = request.params.title;
+    var id = request.params.id;
     var query = "select e.EmployeeID, e.LastName, e.FirstName, e.Title from employees e where e.EmployeeID = ?";
     var parametros = [id];
     conn.query(query, parametros, function (err, resultado) {
