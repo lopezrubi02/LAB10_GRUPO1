@@ -87,6 +87,7 @@ app.post("/empleados/update", bodyParser.json(),function (request, response) {
                     estado: "error",
                     message: err,
                 };
+            response.status(400);
             response.json(jsonRespuesta);
         }else{
             var jsonRespuesta =
