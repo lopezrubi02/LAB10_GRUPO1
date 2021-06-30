@@ -22,6 +22,20 @@ conn.connect(function (err) {
     }
 });
 
+/**         PREGUNTA 5      **/
+app.get("/productos/get", function (request, response) {
+    var page = request.query.page;
+    var query = "select ProductID,ProductName,UnitPrice,UnitsInStock from products p limit ?,10";
+    var parametros = [(page-1)*10];
+    conn.query(query, parametros, function (err, resultado) {
+        if (err) {
+            console.log(err);
+        } else {
+            response.json(resultado);
+        }
+    });
+});
+
 app.listen(3100, function () {
     console.log("servidor levantado exitosamente");
 });
